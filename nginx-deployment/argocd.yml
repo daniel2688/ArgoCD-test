@@ -1,17 +1,26 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: cdwithargo
+  name: nginx-deployment
+  labels:
+    app: nginx
 spec:
-  destination:
-    server: 'https://kubernetes.default.svc'  # Correcto, porque Argo CD está dentro del clúster
-    namespace: default
-  source:
-    repoURL: 'https://github.com/daniel2688/ArgoCD-test.git'
-    path: nginx-deployment
-    targetRevision: HEAD
-  project: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+
+
+
+
+
