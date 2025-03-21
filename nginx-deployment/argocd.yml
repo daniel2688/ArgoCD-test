@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: CD-with-Argo
+  name: cdwithargo
 spec:
   destination:
     server: 'https://kubernetes.default.svc'  # Correcto, porque Argo CD está dentro del clúster
