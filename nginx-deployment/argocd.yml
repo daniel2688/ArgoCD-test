@@ -5,11 +5,11 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
-  template:
+  template:   # Plantilla de los pods que se van a crear
     metadata:
       labels:
         app: nginx
